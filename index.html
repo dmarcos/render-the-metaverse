@@ -14,6 +14,8 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-20716567-4');
+
+      if (window.location.protocol != "https:") { window.location.protocol = "https:" }
     </script>
   </head>
   <body>
@@ -31,6 +33,7 @@
         layer="src: #livingwithnaturecubemap; type: stereocubemap"
         position="0 1.8 -1.5"></a-entity>
       <a-entity
+        id="welcome"
         rotation="0 0 0"
         position="0 1.6 -0.75"
         material="shader: flat; src: #panel"
@@ -46,8 +49,6 @@
           if (tracker) { tracker.send('event', 'enter-vr', 'webxr'); }
         }
       });
-
-      if (window.location.protocol != "https:") { window.location.protocol = "https:" }
     </script>
   </body>
 </html>

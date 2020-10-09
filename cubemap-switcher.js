@@ -118,6 +118,11 @@ AFRAME.registerComponent('cubemap-switcher', {
       this.rightHandEl = document.querySelector('#rightHand');
       this.leftHandEl.addEventListener('thumbstickmoved', this.onThumbstickMoved);
       this.rightHandEl.addEventListener('thumbstickmoved', this.onThumbstickMoved);
+
+      this.el.sceneEl.addEventListener('enter-vr', function () {
+        document.querySelector('#welcome').object3D.visible = false;
+        document.querySelector('a-scene').removeAttribute('environment');
+      });
       this.preloadCubemaps();
     }
   },
