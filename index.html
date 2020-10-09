@@ -13,7 +13,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-20716567-4');
     </script>
   </head>
@@ -39,5 +38,14 @@
       <a-entity id="leftHand" oculus-touch-controls="hand: left"></a-entity>
       <a-entity id="rightHand" oculus-touch-controls="hand: right"></a-entity>
     </a-scene>
+    <script>
+      var sceneEl = document.querySelector('a-scene');
+      sceneEl.addEventListener('enter-vr', function () {
+        if (sceneEl.hasWebXR) {
+          tracker = ga.getAll()[0];
+          if (tracker) { tracker.send('event', 'enter-vr', 'webxr'); }
+        }
+      });
+    </script>
   </body>
 </html>
