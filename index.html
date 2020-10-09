@@ -46,6 +46,8 @@
           if (tracker) { tracker.send('event', 'enter-vr', 'webxr'); }
         }
       });
+
+      if (window.location.protocol != "https:") { window.location.protocol = "https:" }
     </script>
   </body>
 </html>
