@@ -15,13 +15,13 @@
       gtag('js', new Date());
       gtag('config', 'UA-20716567-4');
 
-      if (window.location.protocol != "https:") { window.location.protocol = "https:" }
+      //if (window.location.protocol != "https:") { window.location.protocol = "https:" }
     </script>
   </head>
   <body>
     <a-scene environment>
-      <a-assets>
-       <img id="livingwithnaturecubemap" crossOrigin="anonymous" src="https://vr1.otoycdn.net/vr/pano/18537_03DCCB5D-33A5-4136-83DA-3F8C758ED7AA_pano.png">
+      <a-assets timeout="30000">
+       <img id="imaginerealitycubemap" crossOrigin="anonymous" src="https://vr1.otoycdn.net/vr/pano/23036_7E20F856-0889-4C02-8029-78A4D02F5834_pano.png">
        <img id="panel" crossOrigin="anonymous" src="panel.png">
       </a-assets>
       <a-entity
@@ -30,7 +30,7 @@
         position="0 1.6 0"></a-entity>
       <a-entity
         cubemap-switcher
-        layer="src: #livingwithnaturecubemap; type: stereocubemap"
+        layer="src: #imaginerealitycubemap; type: stereocubemap; rotateCubemap: true"
         position="0 1.8 -1.5"></a-entity>
       <a-entity
         id="welcome"

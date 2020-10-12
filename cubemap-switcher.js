@@ -2,6 +2,7 @@
 AFRAME.registerComponent('cubemap-switcher', {
   init: function () {
     var cubemapURL = getQueryVariable('cubemapURL');
+    this.timeOnCubemap = 0;
     if (cubemapURL) {
       this.cubemaps = [{
         id: 'usercubemap',
@@ -13,28 +14,8 @@ AFRAME.registerComponent('cubemap-switcher', {
     } else {
       this.cubemaps = [
         {
-          id: 'livingwithnaturecubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/18537_03DCCB5D-33A5-4136-83DA-3F8C758ED7AA_pano.png',
-          rotate: true
-        },
-        {
-          id: 'learninganatomycubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/16976_E8CF73F1-0AE3-47B1-AF13-BD5F875D9D37_pano.png',
-          rotate: true
-        },
-        {
           id: 'imaginerealitycubemap',
           src: 'https://vr1.otoycdn.net/vr/pano/23036_7E20F856-0889-4C02-8029-78A4D02F5834_pano.png',
-          rotate: true
-        },
-        {
-          id: 'inariforestcubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/3781_4CE2FAD6-7D67-4B17-87F2-AB796090E65A_pano.png',
-          rotate: true
-        },
-        {
-          id: 'toystorycubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/5034_9D12BBB5-DFBC-4DEC-82D5-0CF7EE320F4F_pano.png',
           rotate: true
         },
         {
@@ -43,33 +24,18 @@ AFRAME.registerComponent('cubemap-switcher', {
           rotate: true
         },
         {
+          id: 'raisedintooblivioncubemap',
+          src: 'https://vr1.otoycdn.net/vr/pano/13884_3821EBB8-134A-4C24-9176-FFBA6DCF3CC9_pano.png',
+          rotate: false
+        },
+        {
           id: 'daybegancubemap',
           src: 'https://vr1.otoycdn.net/vr/pano/9828_17AD4FA9-6C29-460D-B611-FEC36370C0A6_pano.png',
           rotate: true
         },
         {
-          id: 'losttimecubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/23624_2CA89B4A-6E0F-452E-99B6-5DC46B00C34D_pano.png',
-          rotate: true
-        },
-        {
-          id: 'creativemindcubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/19732_EC1B4D6A-FE93-48B2-B7F0-445177C3DC35_pano.png',
-          rotate: false
-        },
-        {
-          id: 'minimetaversecubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/14627_198A06E7-8742-4A26-9B99-B769F8DC4470_pano.png',
-          rotate: true
-        },
-        {
-          id: 'neonbuddhacubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/5034_E08E1DF3-8341-4091-A793-600173B39806_pano.png',
-          rotate: true
-        },
-        {
-          id: 'twosidescubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/21737_24A207C8-BDC7-4735-AB16-25A4C8A4004F_pano.png',
+          id: 'exploringmetaversecubemap',
+          src: 'https://vr1.otoycdn.net/vr/pano/20075_D4CDCFE8-E077-447A-ADA0-3C0F2BD5CBB6_pano.png',
           rotate: false
         },
         {
@@ -78,9 +44,24 @@ AFRAME.registerComponent('cubemap-switcher', {
           rotate: false
         },
         {
-          id: 'exploringmetaversecubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/20075_D4CDCFE8-E077-447A-ADA0-3C0F2BD5CBB6_pano.png',
+          id: 'learninganatomycubemap',
+          src: 'https://vr1.otoycdn.net/vr/pano/16976_E8CF73F1-0AE3-47B1-AF13-BD5F875D9D37_pano.png',
+          rotate: true
+        },
+        {
+          id: 'minimetaversecubemap',
+          src: 'https://vr1.otoycdn.net/vr/pano/14627_198A06E7-8742-4A26-9B99-B769F8DC4470_pano.png',
           rotate: false
+        },
+        {
+          id: 'toystorycubemap',
+          src: 'https://vr1.otoycdn.net/vr/pano/5034_9D12BBB5-DFBC-4DEC-82D5-0CF7EE320F4F_pano.png',
+          rotate: true
+        },
+        {
+          id: 'losttimecubemap',
+          src: 'https://vr1.otoycdn.net/vr/pano/23624_2CA89B4A-6E0F-452E-99B6-5DC46B00C34D_pano.png',
+          rotate: true
         },
         {
           id: 'betweencloudscubemap',
@@ -88,13 +69,18 @@ AFRAME.registerComponent('cubemap-switcher', {
           rotate: true
         },
         {
-          id: 'smallflatmetaversecubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/2826_FFC73CBF-0502-4D98-827D-4EC33DE3FA4F_pano.png',
+          id: 'pursuitofmetaverse',
+          src: 'https://vr1.otoycdn.net/vr/pano/20075_228BC925-E0ED-454C-953E-85E8FCE9371B_pano.png',
           rotate: false
         },
         {
-          id: 'raisedintooblivioncubemap',
-          src: 'https://vr1.otoycdn.net/vr/pano/13884_3821EBB8-134A-4C24-9176-FFBA6DCF3CC9_pano.png',
+          id: 'livingwithnaturecubemap',
+          src: 'https://vr1.otoycdn.net/vr/pano/18537_03DCCB5D-33A5-4136-83DA-3F8C758ED7AA_pano.png',
+          rotate: true
+        },
+        {
+          id: 'twosidescubemap',
+          src: 'https://vr1.otoycdn.net/vr/pano/21737_24A207C8-BDC7-4735-AB16-25A4C8A4004F_pano.png',
           rotate: false
         },
         {
@@ -103,8 +89,13 @@ AFRAME.registerComponent('cubemap-switcher', {
           rotate: false
         },
         {
-          id: 'pursuitofmetaverse',
-          src: 'https://vr1.otoycdn.net/vr/pano/20075_228BC925-E0ED-454C-953E-85E8FCE9371B_pano.png',
+          id: 'neonbuddhacubemap',
+          src: 'https://vr1.otoycdn.net/vr/pano/5034_E08E1DF3-8341-4091-A793-600173B39806_pano.png',
+          rotate: true
+        },
+        {
+          id: 'smallflatmetaversecubemap',
+          src: 'https://vr1.otoycdn.net/vr/pano/2826_FFC73CBF-0502-4D98-827D-4EC33DE3FA4F_pano.png',
           rotate: false
         }
       ];
@@ -125,6 +116,10 @@ AFRAME.registerComponent('cubemap-switcher', {
       });
       this.preloadCubemaps();
     }
+  },
+
+  tick: function (time, delta) {
+    this.timeOnCubemap += delta;
   },
 
   onThumbstickMoved: function (evt) {
@@ -170,6 +165,16 @@ AFRAME.registerComponent('cubemap-switcher', {
 
   switchCubemap: function (previous) {
     var cubemapIndex = previous === true ? this.cubemapIndex - 1 : this.cubemapIndex + 1;
+
+    if (tracker) { tracker.send(
+      'event',
+      'cubemap-ended',
+      this.cubemaps[this.cubemapIndex].id,
+      this.timeOnCubemap)
+    }
+
+    this.timeOnCubemap = 0;
+
     if (cubemapIndex < 0) { cubemapIndex = this.cubemaps.length - 1; }
     if (cubemapIndex === this.cubemaps.length) { cubemapIndex = 0; }
     // var imgEl = this.cubemaps[cubemapIndex].imgEl;
@@ -182,6 +187,9 @@ AFRAME.registerComponent('cubemap-switcher', {
 
     this.cubemapIndex = cubemapIndex;
     this.imgLoading = false;
+
+    tracker = ga.getAll()[0];
+    if (tracker) { tracker.send('event', 'cubemap-started', this.cubemaps[cubemapIndex].id); }
     // nextImgEl = this.cubemaps[cubemapIndex+1] && this.cubemaps[cubemapIndex+1].imgEl;
     // if (nextImgEl) {
     //   if (nextImgEl.complete) {
