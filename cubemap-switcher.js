@@ -2,6 +2,8 @@
 AFRAME.registerComponent('cubemap-switcher', {
   init: function () {
     var cubemapURL = getQueryVariable('cubemapURL');
+    // Don't load cubemaps if not WebXR
+    if (!this.el.sceneEl.hasWebXR) { return; }
     this.timeOnCubemap = 0;
     if (cubemapURL) {
       this.cubemaps = [{
