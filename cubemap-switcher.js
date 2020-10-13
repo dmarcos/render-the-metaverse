@@ -170,7 +170,7 @@ AFRAME.registerComponent('cubemap-switcher', {
       'event',
       'cubemap-ended',
       this.cubemaps[this.cubemapIndex].id,
-      this.timeOnCubemap)
+      Math.round(this.timeOnCubemap / 1000))
     }
 
     this.timeOnCubemap = 0;
