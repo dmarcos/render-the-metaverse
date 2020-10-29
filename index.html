@@ -44,8 +44,8 @@
     <script>
       var sceneEl = document.querySelector('a-scene');
       sceneEl.addEventListener('enter-vr', function () {
-        if (sceneEl.hasWebXR) {
-          tracker = ga.getAll()[0];
+        if (sceneEl.hasWebXR && window.ga) {
+          tracker = window.ga.getAll()[0];
           if (tracker) { tracker.send('event', 'enter-vr', 'webxr'); }
         }
       });
