@@ -52,8 +52,8 @@ AFRAME.registerComponent('info-message', {
       '@media only screen and (max-width: 600px) {' +
       '.a-info-message {left: 20px; right: 20px; bottom: 60px; width: auto}}' +
 
-      '@media only screen and (max-height: 600px) {' +
-      '.a-info-message {left: 20px; bottom: 20px; height: 250px}}' +
+      '@media only screen and (max-height: 800px) {' +
+      '.a-info-message {left: 20px; bottom: 20px; height: 350px}}' +
 
       '.a-close-button-info{width: 25px; height: 25px; padding: 0;' +
       'top: 10px; right: 10px; position: absolute; color: white;' +
