@@ -5,6 +5,7 @@
     <title>Render the Metaverse • A-Frame</title>
     <meta name="description" content="Render the Metaverse • A-Frame">
     <script src="aframe-master.min.js"></script>
+    <script src="info-message.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     <script src="cubemap-switcher.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -19,10 +20,11 @@
     </script>
   </head>
   <body>
-    <a-scene environment>
+    <a-scene environment info-message="htmlSrc: #messageText; startOpened: true; width: 300; height: 620">
       <a-assets timeout="90000">
        <img id="imaginerealitycubemap" crossOrigin="anonymous" src="https://vr1.otoycdn.net/vr/pano/23036_7E20F856-0889-4C02-8029-78A4D02F5834_pano.png">
        <img id="panel" crossOrigin="anonymous" src="panel.png">
+       <a-asset-item id="messageText" src="message.html"></a-asset-item>
       </a-assets>
       <a-entity
         camera
