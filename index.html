@@ -4,20 +4,10 @@
     <meta charset="utf-8">
     <title>Render the Metaverse • A-Frame</title>
     <meta name="description" content="Render the Metaverse • A-Frame">
-    <script src="aframe-master.min.js"></script>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.0/dist/aframe-environment-component.min.js"></script>
     <script src="info-message.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     <script src="cubemap-switcher.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20716567-4"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-20716567-4');
-
-      //if (window.location.protocol != "https:") { window.location.protocol = "https:" }
-    </script>
   </head>
   <body>
     <a-scene environment info-message="htmlSrc: #messageText; startOpened: true; width: 500; height: 800">
@@ -43,14 +33,5 @@
       <a-entity id="leftHand" oculus-touch-controls="hand: left"></a-entity>
       <a-entity id="rightHand" oculus-touch-controls="hand: right"></a-entity>
     </a-scene>
-    <script>
-      var sceneEl = document.querySelector('a-scene');
-      sceneEl.addEventListener('enter-vr', function () {
-        if (sceneEl.hasWebXR && window.ga) {
-          tracker = window.ga.getAll()[0];
-          if (tracker) { tracker.send('event', 'enter-vr', 'webxr'); }
-        }
-      });
-    </script>
   </body>
 </html>
