@@ -168,13 +168,6 @@ AFRAME.registerComponent('cubemap-switcher', {
   switchCubemap: function (previous) {
     var cubemapIndex = previous === true ? this.cubemapIndex - 1 : this.cubemapIndex + 1;
 
-    if (tracker) { tracker.send(
-      'event',
-      'cubemap-ended',
-      this.cubemaps[this.cubemapIndex].id,
-      Math.round(this.timeOnCubemap / 1000))
-    }
-
     this.timeOnCubemap = 0;
 
     if (cubemapIndex < 0) { cubemapIndex = this.cubemaps.length - 1; }
@@ -190,8 +183,6 @@ AFRAME.registerComponent('cubemap-switcher', {
     this.cubemapIndex = cubemapIndex;
     this.imgLoading = false;
 
-    tracker = ga.getAll()[0];
-    if (tracker) { tracker.send('event', 'cubemap-started', this.cubemaps[cubemapIndex].id); }
     // nextImgEl = this.cubemaps[cubemapIndex+1] && this.cubemaps[cubemapIndex+1].imgEl;
     // if (nextImgEl) {
     //   if (nextImgEl.complete) {
